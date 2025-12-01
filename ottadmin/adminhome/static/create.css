@@ -1,0 +1,66 @@
+/* Page background */
+body {
+   margin: 0;
+    padding: 0;
+  font-family: Arial, sans-serif;
+  background: #87ceeb;   /* sky blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  
+}
+
+/* Form container */
+.container {
+  background: #e8f5e9;   /* white box */
+  padding: 25px;
+  margin:25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  width: 400px;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form labels */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+/* Input & textarea */
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+  width: 93%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Submit button */
+form button {
+  width: 100%;
+  padding: 10px;
+  background: #6a0dad;  /* navy blue */
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #003d80;  /* darker navy */
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movies List</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'list.css' %}">
+</head>
+<body>
+  {% include 'partials/navbar.html' %}
+  <div class="container">
+    <h2>Movies List</h2>
+
+    <!-- Search bar -->
+    <form class="search-bar" method="GET" action="{%url 'movielist'%}">
+      {% csrf_token %}
+      <input type="text" name="q" value="{{query}}" placeholder="Enter movie to search">
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Movies Table -->
+    <table class="movie-table">
+      <tr>
+        {% for movie in movies %}
+        <td>{{movie.title}}</td>
+        <td>
+          <a class="view" href="{% url 'viewdetail' movie.id %}">view</a>
+          <a class="delete" href="{% url 'delete' movie.id %}">Delete</a>
+          <a class="edit" href="{% url 'editmovie' movie.id %}">Edit</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      {% if movies.has_previous %}
+        <a href="?page={{ movies.previous_page_number }}" class="nav-btn">Prev</a>
+      {% else %}
+        <button class="nav-btn" disabled>Prev</button>
+      {% endif %}
+
+      <span>Page {{ movies.number }} of {{ movies.paginator.num_pages }}</span>
+
+      {% if movies.has_next %}
+        <a href="?page={{ movies.next_page_number }}" class="nav-btn">Next</a>
+      {% else %}
+        <button class="nav-btn" disabled>Next</button>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

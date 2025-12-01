@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User List</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'user_history.css' %}">
+</head>
+<body>{% include 'partials/navbar.html' %}
+<div class="container">
+    <h2>Report</h2>
+    <div class="movies-list">{% if page_obj %}
+      {% for movie in page_obj %}
+     <div class="movie-item">
+          <a href="{% url 'viewdetail' movie.id %}" style="text-decoration:none; color:inherit;">
+        <p><strong>{{ movie.title }}</strong></p>
+      </a>
+          <p>Views: {{ movie.count }}</p>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>No movies found.</p>
+      {% endif %}
+    </div>
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="nav-btn">Prev</a>
+      {% else %}
+        <button class="nav-btn" disabled>Prev</button>
+      {% endif %}
+
+      <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="nav-btn">Next</a>
+      {% else %}
+        <button class="nav-btn" disabled>Next</button>
+      {% endif %}
+    </div>
+</div>
+</body>

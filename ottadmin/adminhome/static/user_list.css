@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #87ceeb; 
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: #e8f5e9;
+  padding: 25px;
+  border-radius: 12px;
+  margin: auto;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  width: 500px;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.search-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px 0 0 6px;
+}
+
+.search-form button {
+  padding: 8px 16px;
+  border: none;
+  background: #6a5acd; /* slate purple */
+  color: white;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #5b4ab0;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between; /* user info left, button right */
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f9f9f9;
+}
+
+.user-card p {
+  margin: 4px 0;
+}
+
+.block-btn {
+  background: #ff4d4d; /* red button */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.block-btn:hover {
+  background: #e60000;
+}
+.user-info p {
+  margin: 4px 0;
+}
+.pagination button {
+  background: #6a5acd;   /* navy blue */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background:#5b4ab0;   /* darker navy */
+}
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}

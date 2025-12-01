@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User List</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'user_list.css' %}">
+</head>
+<body>{% include 'partials/navbar.html' %}
+<div class="container">
+     <h2>Users</h2>
+    <form class="search-form" method="GET" action="{%url 'userlist'%}" >
+      
+      {% csrf_token %}
+      <input type="text"  name="q" value="{{query}}" placeholder="Enter name...">
+      <button type="submit">Search</button>
+    </form>
+    <div class="users" >
+{% for user in users %}
+<div class="user-card">
+  <div class="user-info">
+<p><a href="{% url 'userhistory' user.id %}">{{user.name}}</a></p>
+<p>{{user.email}}</p>
+
+
+
+  </div>
+<form action="{% url 'toggle_block' user.id %}" method="POST">
+{% csrf_token %}
+{% if user.is_active %}
+<button type="submit" class="block-btn">block</button>
+{% else %}
+<button type="submit" class="block-btn unblock">unblock</button>
+{%endif%}
+
+
+</form>
+</div>
+{%empty%}
+<p>no user found</p>
+{%endfor%}
+</div>
+
+
+<br>
+    <div class="pagination">
+       {% if users.has_previous %}
+      <a href="?page={{ users.previous_page_number }}"><button>Prev</button></a>
+      {% endif %}
+      {% if users.has_next %}
+        <a href="?page={{ users.next_page_number }}"><button>Next</button></a>
+      {% endif %}
+    </div>
+
+</div>    
+</body></html>

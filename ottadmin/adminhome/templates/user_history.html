@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User List</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'user_history.css' %}">
+</head>
+<body>{% include 'partials/navbar.html' %}
+<div class="container">
+    <h2>User History</h2>
+    <p><strong>Username</strong>{{user.name}}</p>
+    <div class="movies-list">
+      {%if history %}
+      {% for i in history %}
+<div class="movie-item">
+
+  <p>{{i.movie.title}}</p>
+  <p>watched on : {{i.date| date:"d M Y , H :i"}}</p>
+</div>
+{%endfor%}
+{%else%}
+<p>no watch history found</p>
+{%endif%}
+
+
+    </div><br>
+    <div class="pagination">
+       {% if history.has_previous %}
+      <a href="?page={{ history.previous_page_number }}"><button>Prev</button></a>
+      {% endif %}
+      {% if history.has_next %}
+        <a href="?page={{ history.next_page_number }}"><button>Next</button></a>
+      {% endif %}
+    </div>
+</div>
+</body>

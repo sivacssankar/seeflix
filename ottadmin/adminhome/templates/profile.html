@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Password Change</title>
+    {% load static %}
+    
+      <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+<body>
+   
+  {% include 'partials/navbar.html' %}
+  <div class="container">
+    <h2>Admin Panel</h2>
+    <form action="#" method="POST">
+         {% csrf_token %}
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" value="{{ request.session.admin_email }}" readonly>
+      </div>
+<div class="form-group">
+        <label>current password</label>
+        <input type="password" name="current_password" placeholder="Enter current password">
+      </div>
+
+
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" name="new" placeholder="Enter new password">
+      </div>
+      <button type="submit">Update Password</button>
+    </form>
+    <p class="note">Only password can be changed</p>
+  </div>
+</body>
+</html>

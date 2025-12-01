@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Details</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'moviedetail.css' %}">
+</head>
+<body>{% include 'partials/navbar.html' %}
+    <div class="container">
+    <h2>Movie Details</h2>
+  <label for="title">Title:</label>
+      <input type="text" value="{{movie.title}}" readonly>
+
+      <!-- Description -->
+      <label for="description">Description:</label>
+      <textarea id="d" name="d" rows="4"readonly>  {{movie.desc}} </textarea>
+
+    <div class="thumbnail">
+      <strong>Thumbnail:</strong><br>
+      <img src="{{movie.thumb.url}}" alt="Thumbnail">
+    </div>
+     <div class="video">
+      <strong>Video:</strong><br>   
+      <video controls width="100%">
+        <source src="{{movie.video.url}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    </div>
+</body>
+</html>
